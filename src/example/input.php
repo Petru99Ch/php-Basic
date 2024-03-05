@@ -1,0 +1,3 @@
+<? 
+
+print( $_GET['temp']);
