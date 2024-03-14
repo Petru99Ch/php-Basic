@@ -20,15 +20,11 @@ if(isset($_GET['img'])){
 
 
 
-if($image >= $size_img) {
-    $prev_image = $image - $size_img * 3 ;
-} else {
+$image >= $size_img ? $prev_image = $image - $size_img * 3 : "" ;
 
-}
 
-if($image < $size_img * count($images) - $size_img * 3) {
-    $next_image = $image + $size_img * 3; 
-}
+$image < $size_img * count($images) - $size_img * 3 ? $next_image = $image + $size_img * 3 : ""; 
+
 
 
 
