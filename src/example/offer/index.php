@@ -27,11 +27,12 @@
     } else if ($direction == "ascending"){
         usort($products , fn ($p1, $p2) => $p1['price']['amount'] - $p2['price']['amount'] );
     }
-    
+// price sort
     
 
 ?>
 
+<!-- STYLE -->
 <style>
 
     a {
@@ -44,9 +45,9 @@
 
 </style>
 
+<!-- STYLE -->
 
-
-
+<!-- TEMPLATE -->
     <?if($page != 1){?>
         <a href="?p=<?= $prev_page?>">&lt;</a>
     <?}?>
@@ -103,3 +104,4 @@
         <? }?>
         
     </ul>
+<!-- TEMPLATE -->
