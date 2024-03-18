@@ -10,8 +10,8 @@
         $page = 1;
     }
     
-    $page > 1 ? $prev_page = $page-1 : "" ;   
-    $page < count($products) / $products_from_page ? $next_page = $page+1 : "" ;
+    $page > 1 ? $prev_page = $page - 1 : "" ;   
+    $page < count($products) / $products_from_page ? $next_page = $page + 1 : "" ;
 // paginator
 
 // price sort
@@ -19,7 +19,7 @@
     if(isset($_GET['sort'])){
         $direction = $_GET['sort'];
     } else {
-        $direction = "descending";
+        $direction = "ascending";
     }
 
     if($direction == "descending"){
@@ -29,6 +29,11 @@
     }
 // price sort
     
+
+        $idx = $page == 1 ? 0 : $products_from_page ;
+        $arr = $page == 1 ? count($products) - $products_from_page : count($products) ;
+        
+        
 
 ?>
 
@@ -76,9 +81,7 @@
 
 
     <ul>
-
-        <? if($page == 1) {?>
-            <? for($i= 0; $i <  $products_from_page;  $i++ ) {?>
+            <? for($i = $idx ; $i < $arr ;  $i++ ) {?>
                 <li>
                     <h2>
                         <?= $products[$i]['name']  ?>
@@ -89,19 +92,4 @@
                     <div> <?= $products[$i]['price']['amount']?> <?=$products[$i]['price']['currency'] ?></div> <hr>
                 </li>
             <?}?>
-        <?} elseif ($page == 2)  {?>
-            <? for($i = count($products) - $products_from_page; $i <  count($products);  $i++ ) {?>
-                <li>
-                    <h2>
-                        <?= $products[$i]['name']  ?>
-                        <?if($products[$i]['new']) { ?> <img src="<?= NEW_STICKER?>" width='50'/> <? } ?>
-                    </h2>
-                    <h3><?= $products[$i]['category'] ?></h3>
-                    <img src="<?= $products[$i]['image'] ?>" width='200'>
-                    <div> <?= $products[$i]['price']['amount']?> <?=$products[$i]['price']['currency'] ?></div> <hr>
-                </li>
-            <?}?>
-        <? }?>
-        
     </ul>
-<!-- TEMPLATE -->
