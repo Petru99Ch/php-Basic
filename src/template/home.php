@@ -1,1 +1,3 @@
-<section>MAIN PAGE</section>
+<section>
+    <? include 'tours.php'; ?>
+</section>
